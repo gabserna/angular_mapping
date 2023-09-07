@@ -1,1 +1,9 @@
-<p>aqui hay algo: {{ datos }}</p>
+<div *ngIf="breeds">
+  <h1>Dog's Breed List</h1>
+  <ul>
+    <li *ngFor="let breed of breeds.data">
+      {{ breed.name }}
+    </li>
+  </ul>
+  <button *ngIf="nextPage" (click)="loadNextPage()">next page >></button>
+</div>

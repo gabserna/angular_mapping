@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomApiService } from '../random-api.service';
+import { DogService } from '../dog.service';
 
 @Component({
   selector: 'app-doggy',
@@ -7,14 +7,24 @@ import { RandomApiService } from '../random-api.service';
   styleUrls: ['./doggy.component.css']
 })
 export class DoggyComponent implements OnInit {
-  datos: any;
+  breeds: any;
+  nextPage!: string;
 
-  constructor(private randomApiService: RandomApiService) { }
+  constructor(private dogService: DogService) { }
 
-  ngOnInit() {
-    this.randomApiService.getData().subscribe((data) => {
-      this.datos = data;
+  ngOnInit(): void {
+    this.dogService.getBreeds().subscribe((data: any) => {
+      this.breeds = data;
+      this.nextPage = data.links.next;
     });
   }
 
+  loadNextPage(): void {
+    if (this.nextPage) {
+      this.dogService.getNextPage(2).subscribe((data: any) => {
+        this.breeds = data;
+        this.nextPage = data.links.next;
+      });
+    }
+  }
 }

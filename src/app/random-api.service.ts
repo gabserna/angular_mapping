@@ -11,6 +11,6 @@ export class RandomApiService {
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/datos`);
+    return this.http.get(`${this.apiUrl}/breed`);
   }
 }
