@@ -1,9 +1,33 @@
-<div *ngIf="breeds">
-  <h3>Dog's Breed List</h3>
-  <ul>
-    <li *ngFor="let breed of breeds.data">
-      {{ breed.name }}
-    </li>
-  </ul>
-  <button *ngIf="nextPage" (click)="loadNextPage()">next page >></button>
-</div>
+<!-- GET /breeds -->
+<h1>GET /breeds</h1>
+<mat-card *ngFor="let breed of breeds">
+  <h2>{{ breed.attributes.name }}</h2>
+  <p>{{ breed.attributes.description }}</p>
+</mat-card>
+<hr>
+
+<!-- GET breeds by id -->
+<h1>GET breeds by id</h1>
+<mat-card *ngIf="selectedBreed">
+  <h2>{{ selectedBreed.attributes.name }}</h2>
+  <p>{{ selectedBreed.attributes.description }}</p>
+  <p>Es hipoalergénico: {{ selectedBreed.attributes.hypoallergenic ? 'Sí' : 'No' }}</p>
+</mat-card>
+
+<!-- GET Facts -->
+<h1>GET Facts</h1>
+<mat-list>
+  <mat-list-item *ngFor="let fact of facts">{{ fact.attributes.body }}</mat-list-item>
+</mat-list>
+
+<!-- GET by groups -->
+<h1>GET by groups</h1>
+<mat-list>
+  <mat-list-item *ngFor="let group of groups">{{ group.attributes.name }}</mat-list-item>
+</mat-list>
+
+<!-- GET groups by id -->
+<h1>GET groups by id</h1>
+<mat-card *ngIf="selectedGroup">
+  <h2>{{ selectedGroup.attributes.name }}</h2>
+</mat-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DogService } from '../dog.service';
+import { DoggyService } from '../dog.service';
+
 
 @Component({
   selector: 'app-doggy',
@@ -7,24 +8,17 @@ import { DogService } from '../dog.service';
   styleUrls: ['./doggy.component.css']
 })
 export class DoggyComponent implements OnInit {
-  breeds: any;
-  nextPage!: string;
+  breeds: any[] = [];
+  selectedBreed: any;
+  facts: any[] = [];
+  groups: any[] = [];
+  selectedGroup: any;
 
-  constructor(private dogService: DogService) { }
+  constructor(private doggyService: DoggyService) {}
 
   ngOnInit(): void {
-    this.dogService.getBreeds().subscribe((data: any) => {
-      this.breeds = data;
-      this.nextPage = data.links.next;
+    this.doggyService.getBreeds().subscribe((data: any) => {
+      this.breeds = data.data;
     });
-  }
-
-  loadNextPage(): void {
-    if (this.nextPage) {
-      this.dogService.getNextPage(2).subscribe((data: any) => {
-        this.breeds = data;
-        this.nextPage = data.links.next;
-      });
-    }
   }
 }
