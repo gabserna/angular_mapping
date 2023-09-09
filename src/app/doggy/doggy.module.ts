@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { DoggyComponent } from './doggy.component';
+
+
 
 @NgModule({
-  declarations: [DoggyComponent],
+  declarations: [],
   imports: [
-    CommonModule,
-    MatCardModule,
-  ],
+    CommonModule
+  ]
 })
-export class DoggyModule {}
+export class DoggyModule { }

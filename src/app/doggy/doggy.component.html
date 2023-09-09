@@ -1,33 +1,31 @@
-<!-- GET /breeds -->
 <h1>GET /breeds</h1>
-<mat-card *ngFor="let breed of breeds">
+<div *ngFor="let breed of breeds">
   <h2>{{ breed.attributes.name }}</h2>
   <p>{{ breed.attributes.description }}</p>
-</mat-card>
-<hr>
+</div>
+<!-- -------------------------------------------------------- -->
 
-<!-- GET breeds by id -->
 <h1>GET breeds by id</h1>
-<mat-card *ngIf="selectedBreed">
+<div *ngIf="selectedBreed">
   <h2>{{ selectedBreed.attributes.name }}</h2>
   <p>{{ selectedBreed.attributes.description }}</p>
-  <p>Es hipoalergénico: {{ selectedBreed.attributes.hypoallergenic ? 'Sí' : 'No' }}</p>
-</mat-card>
+  <p>Hipoalergenic?: {{ selectedBreed.attributes.hypoallergenic ? 'Y' : 'N' }}</p>
+</div>
+<!-- -------------------------------------------------------- -->
 
-<!-- GET Facts -->
 <h1>GET Facts</h1>
-<mat-list>
-  <mat-list-item *ngFor="let fact of facts">{{ fact.attributes.body }}</mat-list-item>
-</mat-list>
+<ul>
+  <li *ngFor="let fact of facts">{{ fact.attributes.body }}</li>
+</ul>
 
-<!-- GET by groups -->
+<!-- -------------------------------------------------------- -->
 <h1>GET by groups</h1>
-<mat-list>
-  <mat-list-item *ngFor="let group of groups">{{ group.attributes.name }}</mat-list-item>
-</mat-list>
+<ul>
+  <li *ngFor="let group of groups">{{ group.attributes.name }}</li>
+</ul>
+<!-- -------------------------------------------------------- -->
 
-<!-- GET groups by id -->
 <h1>GET groups by id</h1>
-<mat-card *ngIf="selectedGroup">
+<div *ngIf="selectedGroup">
   <h2>{{ selectedGroup.attributes.name }}</h2>
-</mat-card>
+</div>
